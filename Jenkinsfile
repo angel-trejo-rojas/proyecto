@@ -101,7 +101,7 @@ pipeline {
                 body: "<p>your body</p>",
                 cc: '',
                 charset: 'UTF-8',
-                from: '',
+                from: 'micorreo@mail.com',
                 mimeType: 'text/html',
                 replyTo: '',
                 subject: "your subject",
