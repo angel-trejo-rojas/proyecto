@@ -27,7 +27,7 @@
     }
 }*/
 
-pipeline {
+/*pipeline {
     agent {
         label '!windows'
     }
@@ -44,6 +44,38 @@ pipeline {
                 echo "DISABLE_AUTH is ${DISABLE_AUTH}"
                 sh 'printenv'
             }
+        }
+    }
+}*/
+
+pipeline {
+    agent any
+    stages {
+        stage('No-op') {
+            steps {
+                sh 'ls'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            //deleteDir()  /*clean up our workspace */
+        }
+        success {
+            echo 'I succeeded!'
+            mail to: 'angel_t_r@hotmail.com',
+                subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
+                body: "Something is ok with ${env.BUILD_URL}"
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
         }
     }
 }
