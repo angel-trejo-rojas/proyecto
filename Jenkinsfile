@@ -96,17 +96,6 @@ pipeline {
         }
         success {
             echo 'I succeeded!'
-            mail(
-                bcc: '',
-                body: "<p>your body</p>",
-                cc: '',
-                charset: 'UTF-8',
-                from: 'micorreo@mail.com',
-                mimeType: 'text/html',
-                replyTo: '',
-                subject: "your subject",
-                to: "angel_t_r@hotmail.com"
-            )
         }
         unstable {
             echo 'I am unstable :/'
