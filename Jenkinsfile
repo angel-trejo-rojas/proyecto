@@ -80,7 +80,7 @@
     }
 }*/
 
-pipeline {
+/*pipeline {
     agent any
     stages {
         stage('No-op') {
@@ -105,6 +105,30 @@ pipeline {
         }
         changed {
             echo 'Things were different before...'
+        }
+    }
+}*/
+
+pipeline {
+    agent any
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying'
+            }
         }
     }
 }
