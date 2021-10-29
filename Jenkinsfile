@@ -186,5 +186,23 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            echo 'always: One way or another, I have finished'
+            /*deleteDir()*/ /* clean up our workspace */
+        }
+        success {
+            echo 'success: I succeeded!'
+        }
+        unstable {
+            echo 'unestable: I am unstable :/'
+        }
+        failure {
+            echo 'failure: I failed :('
+        }
+        changed {
+            echo 'changed: Things were different before...'
+        }
+    }
 }
 
