@@ -193,6 +193,10 @@ pipeline {
         }
         success {
             echo 'success: I succeeded!'
+            
+            mail to: 'angel.trejo@utchetumal.edu.mx',
+            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Something is wrong with ${env.BUILD_URL}"
         }
         unstable {
             echo 'unestable: I am unstable :/'
